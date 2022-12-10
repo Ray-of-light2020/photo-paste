@@ -8,11 +8,14 @@ Sub photo_paste()
   
   Application.ScreenUpdating = False
   shape_name = Selection.Name
-  WDT = ActiveSheet.Shapes(shape_name).Width
-  HGT = ActiveSheet.Shapes(shape_name).Height
-  TOP = ActiveSheet.Shapes(shape_name).TOP
-  LEFT = ActiveSheet.Shapes(shape_name).LEFT
-
+  
+  With ActiveSheet
+    WDT = .Shapes(shape_name).Width
+    HGT = .Shapes(shape_name).Height
+    TOP = .Shapes(shape_name).TOP
+    LEFT = .Shapes(shape_name).LEFT
+  End With
+  
         On Error GoTo Fin
             Application.Dialogs(xlDialogInsertPicture).Show
              With Selection.ShapeRange
